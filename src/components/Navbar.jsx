@@ -89,17 +89,15 @@ const Navbar = ({ onMenuToggle }) => {
 
   return (
     <nav className="navbar">
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-          <div onClick={() => navigate('/')} style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: '1.25rem', letterSpacing: '-0.02em', cursor: 'pointer', lineHeight: 1, marginBottom: '2px' }}>
-            Ink<span style={{ fontStyle: 'italic', opacity: 0.6 }}>Well</span>
-          </div>
-          <button className="mobile-menu-btn" onClick={onMenuToggle} style={{ width: 'auto', height: 'auto', padding: '2px 8px', fontSize: '1.4rem' }}>
-            <HiMenu />
-          </button>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+        <button className="mobile-menu-btn" onClick={onMenuToggle}>
+          <HiMenu />
+        </button>
+        <div onClick={() => navigate('/')} style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: '1.25rem', letterSpacing: '-0.02em', cursor: 'pointer', lineHeight: 1 }}>
+          Ink<span style={{ fontStyle: 'italic', opacity: 0.6 }}>Well</span>
         </div>
 
-        <div style={{ position: 'relative' }} ref={searchRef}>
+        <div style={{ position: 'relative', marginLeft: '8px' }} ref={searchRef}>
           <div className="navbar-search">
             <HiSearch />
             <input

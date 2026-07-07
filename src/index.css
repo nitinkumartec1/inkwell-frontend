@@ -1738,12 +1738,22 @@ img {
   justify-content: center;
   width: 40px;
   height: 40px;
-  border-radius: var(--radius-full);
+  border-radius: 10px;
   font-size: 1.25rem;
   color: var(--text-secondary);
   background: transparent;
   border: none;
   cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mobile-menu-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.mobile-menu-btn:active {
+  transform: scale(0.95);
 }
 
 .mobile-overlay {
