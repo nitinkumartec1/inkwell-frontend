@@ -89,91 +89,87 @@ const Navbar = ({ onMenuToggle }) => {
 
   return (
     <nav className="navbar">
-      <div style={{ display: 'flex', alignItems: 'center', flex: 1 }}>
-        <div className="mobile-menu-container" style={{ display: 'none', alignItems: 'center', gap: 16 }}>
-          <button className="mobile-menu-btn" onClick={onMenuToggle}>
-            <HiMenu />
-          </button>
-          <div onClick={() => navigate('/')} style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: '1.6rem', letterSpacing: '-0.02em', cursor: 'pointer', lineHeight: 1 }}>
-            Ink<span style={{ fontStyle: 'italic', opacity: 0.6 }}>Well</span>
-          </div>
+      <div className="navbar-left-section">
+        <button className="mobile-menu-btn" onClick={onMenuToggle}>
+          <HiMenu />
+        </button>
+        <div className="navbar-logo-mobile" onClick={() => navigate('/')}>
+          Ink<span style={{ fontStyle: 'italic', opacity: 0.6 }}>Well</span>
         </div>
       </div>
 
-      <div style={{ display: 'flex', justifyContent: 'center', flex: '0 1 auto' }}>
-        <div style={{ position: 'relative' }} ref={searchRef}>
-          <div className="navbar-search">
-            <HiSearch />
-            <input
-              type="text"
-              placeholder="Search stories, writers..."
-              value={searchQuery}
-              onChange={(e) => handleSearch(e.target.value)}
-              id="search-input"
-            />
-          </div>
-
-          {showSearch && (searchResults.users.length > 0 || searchResults.stories.length > 0) && (
-            <div className="search-dropdown">
-              {searchResults.users.length > 0 && (
-                <>
-                  <div style={{ padding: '10px 16px', fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-muted)', textTransform: 'uppercase' }}>
-                    Writers
-                  </div>
-                  {searchResults.users.map((u) => (
-                    <div
-                      key={u._id}
-                      className="search-result-item"
-                      onClick={() => {
-                        navigate(`/user/${u.username}`);
-                        setShowSearch(false);
-                        setSearchQuery('');
-                      }}
-                    >
-                      {u.profilePic ? (
-                        <img src={u.profilePic} alt="" className="search-result-avatar" />
-                      ) : (
-                        <div className="search-result-avatar" style={{ background: 'var(--bg-tertiary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.9rem', fontWeight: 600 }}>
-                          {u.name[0]}
-                        </div>
-                      )}
-                      <div>
-                        <div className="search-result-name">{u.name}</div>
-                        <div className="search-result-username">@{u.username}</div>
-                      </div>
-                    </div>
-                  ))}
-                </>
-              )}
-              {searchResults.stories.length > 0 && (
-                <>
-                  <div style={{ padding: '10px 16px', fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-muted)', textTransform: 'uppercase' }}>
-                    Stories
-                  </div>
-                  {searchResults.stories.map((s) => (
-                    <div
-                      key={s._id}
-                      className="search-result-item"
-                      onClick={() => {
-                        navigate(`/story/${s._id}`);
-                        setShowSearch(false);
-                        setSearchQuery('');
-                      }}
-                    >
-                      <div>
-                        <div className="search-result-name">{s.title}</div>
-                        <div className="search-result-username">by {s.author?.name}</div>
-                      </div>
-                    </div>
-                  ))}
-                </>
-              )}
-            </div>
-          )}
+      <div className="navbar-center-section" ref={searchRef}>
+        <div className="navbar-search">
+          <HiSearch />
+          <input
+            type="text"
+            placeholder="Search stories, writers..."
+            value={searchQuery}
+            onChange={(e) => handleSearch(e.target.value)}
+            id="search-input"
+          />
         </div>
+
+        {showSearch && (searchResults.users.length > 0 || searchResults.stories.length > 0) && (
+          <div className="search-dropdown">
+            {searchResults.users.length > 0 && (
+              <>
+                <div style={{ padding: '10px 16px', fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-muted)', textTransform: 'uppercase' }}>
+                  Writers
+                </div>
+                {searchResults.users.map((u) => (
+                  <div
+                    key={u._id}
+                    className="search-result-item"
+                    onClick={() => {
+                      navigate(`/user/${u.username}`);
+                      setShowSearch(false);
+                      setSearchQuery('');
+                    }}
+                  >
+                    {u.profilePic ? (
+                      <img src={u.profilePic} alt="" className="search-result-avatar" />
+                    ) : (
+                      <div className="search-result-avatar" style={{ background: 'var(--bg-tertiary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.9rem', fontWeight: 600 }}>
+                        {u.name[0]}
+                      </div>
+                    )}
+                    <div>
+                      <div className="search-result-name">{u.name}</div>
+                      <div className="search-result-username">@{u.username}</div>
+                    </div>
+                  </div>
+                ))}
+              </>
+            )}
+            {searchResults.stories.length > 0 && (
+              <>
+                <div style={{ padding: '10px 16px', fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-muted)', textTransform: 'uppercase' }}>
+                  Stories
+                </div>
+                {searchResults.stories.map((s) => (
+                  <div
+                    key={s._id}
+                    className="search-result-item"
+                    onClick={() => {
+                      navigate(`/story/${s._id}`);
+                      setShowSearch(false);
+                      setSearchQuery('');
+                    }}
+                  >
+                    <div>
+                      <div className="search-result-name">{s.title}</div>
+                      <div className="search-result-username">by {s.author?.name}</div>
+                    </div>
+                  </div>
+                ))}
+              </>
+            )}
+          </div>
+        )}
       </div>
 
-      <div className="navbar-actions" style={{ flex: 1, justifyContent: 'flex-end' }}>
+      <div className="navbar-right-section navbar-actions">
         {user ? (
           <>
             <button

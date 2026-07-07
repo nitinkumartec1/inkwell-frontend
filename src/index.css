@@ -205,9 +205,30 @@ img {
   box-shadow: var(--shadow-neu);
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 0 28px;
   z-index: 100;
+  backdrop-filter: blur(12px);
+}
+
+.navbar-left-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navbar-logo-mobile {
+  display: none;
+}
+
+.navbar-center-section {
+  position: relative;
+  margin-right: auto;
+  margin-left: 12px;
+}
+
+.navbar-right-section {
+  display: flex;
+  align-items: center;
 }
 
 .navbar-search {
@@ -1727,6 +1748,30 @@ img {
   }
   .mobile-menu-container {
     display: flex !important;
+  }
+  .navbar-left-section {
+    flex: 1;
+    gap: 16px;
+  }
+  .navbar-logo-mobile {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    letter-spacing: -0.02em;
+    cursor: pointer;
+    line-height: 1;
+  }
+  .navbar-center-section {
+    margin-right: 0;
+    margin-left: 0;
+    flex: 0 1 auto;
+    display: flex;
+    justify-content: center;
+  }
+  .navbar-right-section {
+    flex: 1;
+    justify-content: flex-end;
   }
   .desktop-only {
     display: none !important;
