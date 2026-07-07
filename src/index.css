@@ -101,6 +101,7 @@
 
 html {
   font-size: 16px;
+  zoom: 0.9;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -175,7 +176,7 @@ img {
 
 .main-content {
   flex: 1;
-  margin-left: var(--sidebar-width);
+  margin-left: 0;
   padding-top: calc(var(--navbar-height) + 32px);
   min-height: 100vh;
 }
@@ -196,7 +197,7 @@ img {
 .navbar {
   position: fixed;
   top: 16px;
-  left: calc(var(--sidebar-width) + 16px);
+  left: 16px;
   right: 16px;
   height: var(--navbar-height);
   background: var(--bg-secondary);
@@ -332,6 +333,12 @@ img {
   flex-direction: column;
   z-index: 200;
   overflow-y: auto;
+  transform: translateX(-120%);
+  transition: transform 0.3s ease;
+}
+
+.sidebar.open {
+  transform: translateX(0);
 }
 
 .sidebar-logo {
@@ -1678,19 +1685,6 @@ img {
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-  .sidebar {
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-  }
-
-  .sidebar.open {
-    transform: translateX(0);
-  }
-
-  .main-content {
-    margin-left: 0;
-  }
-
   .navbar {
     left: 0;
     padding: 0 16px;
@@ -1721,14 +1715,25 @@ img {
   .page-container, .page-container-wide {
     padding: 20px 16px;
   }
+}
 
-  .mobile-menu-btn {
-    display: flex;
+@media (max-width: 1024px) {
+  .desktop-only {
+    display: none !important;
+  }
+  .mobile-only {
+    display: block !important;
+  }
+}
+
+@media (min-width: 1025px) {
+  .mobile-only {
+    display: none !important;
   }
 }
 
 .mobile-menu-btn {
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   width: 40px;
@@ -1736,6 +1741,9 @@ img {
   border-radius: var(--radius-full);
   font-size: 1.25rem;
   color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .mobile-overlay {
@@ -1746,10 +1754,8 @@ img {
   z-index: 150;
 }
 
-@media (max-width: 768px) {
-  .mobile-overlay.open {
-    display: block;
-  }
+.mobile-overlay.open {
+  display: block;
 }
 
 /* ===== TOAST OVERRIDE ===== */

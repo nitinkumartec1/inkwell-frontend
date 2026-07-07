@@ -58,7 +58,7 @@ const Home = () => {
       </div>
 
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24, flexWrap: 'wrap', gap: 12 }}>
-        <div className="tabs" style={{ borderBottom: 'none', marginBottom: 0 }}>
+        <div className="tabs desktop-only" style={{ borderBottom: 'none', marginBottom: 0 }}>
           {forms.map((f) => (
             <button
               key={f.value}
@@ -70,7 +70,18 @@ const Home = () => {
           ))}
         </div>
 
-        <div style={{ display: 'flex', gap: 8 }}>
+        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+          <select
+            className="form-input form-select mobile-only"
+            style={{ width: 'auto', padding: '8px 40px 8px 14px', fontSize: '0.825rem' }}
+            value={activeForm}
+            onChange={(e) => { setActiveForm(e.target.value); setPage(1); }}
+          >
+            {forms.map((f) => (
+              <option key={f.value} value={f.value}>{f.label}</option>
+            ))}
+          </select>
+
           <select
             className="form-input form-select"
             style={{ width: 'auto', padding: '8px 40px 8px 14px', fontSize: '0.825rem' }}
