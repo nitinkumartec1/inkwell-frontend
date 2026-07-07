@@ -342,13 +342,13 @@ img {
 /* ===== SIDEBAR ===== */
 .sidebar {
   position: fixed;
-  top: 16px;
-  left: 16px;
-  bottom: 16px;
-  width: calc(var(--sidebar-width) - 16px);
-  height: calc(100vh - 32px);
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: var(--sidebar-width);
+  height: 100vh;
   background: var(--bg-sidebar);
-  border-radius: var(--radius-xl);
+  border-radius: 0;
   box-shadow: var(--shadow-neu);
   display: flex;
   flex-direction: column;
@@ -1773,6 +1773,9 @@ img {
     flex: 1;
     justify-content: flex-end;
   }
+  .mobile-menu-btn {
+    display: flex;
+  }
   .desktop-only {
     display: none !important;
   }
@@ -1788,7 +1791,7 @@ img {
 }
 
 .mobile-menu-btn {
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   width: 40px;
