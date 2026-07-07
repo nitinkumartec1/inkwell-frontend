@@ -89,12 +89,14 @@ const Navbar = ({ onMenuToggle }) => {
 
   return (
     <nav className="navbar">
-      <div style={{ display: 'flex', alignItems: 'center', gap: 16, flex: 1 }}>
-        <button className="mobile-menu-btn" onClick={onMenuToggle}>
-          <HiMenu />
-        </button>
-        <div onClick={() => navigate('/')} style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: '1.6rem', letterSpacing: '-0.02em', cursor: 'pointer', lineHeight: 1 }}>
-          Ink<span style={{ fontStyle: 'italic', opacity: 0.6 }}>Well</span>
+      <div style={{ display: 'flex', alignItems: 'center', flex: 1 }}>
+        <div className="mobile-menu-container" style={{ display: 'none', alignItems: 'center', gap: 16 }}>
+          <button className="mobile-menu-btn" onClick={onMenuToggle}>
+            <HiMenu />
+          </button>
+          <div onClick={() => navigate('/')} style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: '1.6rem', letterSpacing: '-0.02em', cursor: 'pointer', lineHeight: 1 }}>
+            Ink<span style={{ fontStyle: 'italic', opacity: 0.6 }}>Well</span>
+          </div>
         </div>
       </div>
 
