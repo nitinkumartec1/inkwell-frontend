@@ -89,15 +89,17 @@ const Navbar = ({ onMenuToggle }) => {
 
   return (
     <nav className="navbar">
-      <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 16, flex: 1 }}>
         <button className="mobile-menu-btn" onClick={onMenuToggle}>
           <HiMenu />
         </button>
-        <div onClick={() => navigate('/')} style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: '1.25rem', letterSpacing: '-0.02em', cursor: 'pointer', lineHeight: 1 }}>
+        <div onClick={() => navigate('/')} style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: '1.6rem', letterSpacing: '-0.02em', cursor: 'pointer', lineHeight: 1 }}>
           Ink<span style={{ fontStyle: 'italic', opacity: 0.6 }}>Well</span>
         </div>
+      </div>
 
-        <div style={{ position: 'relative', marginLeft: '8px' }} ref={searchRef}>
+      <div style={{ display: 'flex', justifyContent: 'center', flex: '0 1 auto' }}>
+        <div style={{ position: 'relative' }} ref={searchRef}>
           <div className="navbar-search">
             <HiSearch />
             <input
@@ -169,7 +171,7 @@ const Navbar = ({ onMenuToggle }) => {
         </div>
       </div>
 
-      <div className="navbar-actions">
+      <div className="navbar-actions" style={{ flex: 1, justifyContent: 'flex-end' }}>
         {user ? (
           <>
             <button
