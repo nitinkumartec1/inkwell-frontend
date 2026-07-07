@@ -1741,7 +1741,7 @@ img {
     justify-content: flex-end;
   }
   .mobile-menu-btn {
-    display: flex;
+    display: flex !important;
   }
   .desktop-only {
     display: none !important;
